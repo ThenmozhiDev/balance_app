@@ -1,115 +1,202 @@
 import 'package:flutter/material.dart';
 
+
 class HRTMedicationScreen extends StatefulWidget {
   @override
   _HRTMedicationScreenState createState() => _HRTMedicationScreenState();
 }
 
 class _HRTMedicationScreenState extends State<HRTMedicationScreen> {
-  List<String> selectedMedications = [];
-  final List<String> medications = [
-    'DHEA tablet',
-    'Estrogen cream',
-    'Estrogen lozenge',
-    'Estrogen patch'
-  ];
+  final Map<String, bool> _expandedSections = {
+    'Bioidentical/compounded HRT': false,
+    'Combination patches': false,
+    'Combination tablets': false,
+    'Estrogen gel': false,
+    'Estrogen patches': false,
+  };
 
-  void toggleMedication(String medication) {
-    setState(() {
-      if (selectedMedications.contains(medication)) {
-        selectedMedications.remove(medication);
-      } else {
-        selectedMedications.add(medication);
-      }
-    });
-  }
+  final Map<String, List<String>> _sectionContent = {
+    'Bioidentical/compounded HRT': [
+      'DHEA tablet',
+      'Estrogen cream',
+      'Estrogen lozenge',
+      'Estrogen patch',
+    ],
+    'Combination patches': [
+      'Patch A',
+      'Patch B',
+      'Patch C',
+      'Patch D',
+    ],
+    'Combination tablets': [
+      'Tablet A',
+      'Tablet B',
+      'Tablet C',
+      'Tablet D',
+    ],
+    'Estrogen gel': [
+      'Gel A',
+      'Gel B',
+      'Gel C',
+      'Gel D',
+    ],
+    'Estrogen patches': [
+      'Patch X',
+      'Patch Y',
+      'Patch Z',
+      'Patch W',
+    ],
+  };
+
+  final List<String> _selectedItems = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('HRT Medication'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
-        backgroundColor: Colors.teal,
-      ),
+   
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(2.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            LinearProgressIndicator(
-              value: 0.75,
-              backgroundColor: Colors.grey[300],
-              color: Colors.teal,
-            ),
-            SizedBox(height: 16),
-            Text(
-              "Please select any HRT (if any) that you're currently on",
+            const Text(
+              "Please select any HRT\n(if any) that you're\ncurrently on",
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 35,
                 fontWeight: FontWeight.bold,
+                color: const Color(0xFF0b5369),
               ),
             ),
-            SizedBox(height: 16),
-            if (selectedMedications.isEmpty)
-              Container(
-                height: 50,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text("Nothing selected"),
-              )
-            else
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                children: selectedMedications
-                    .map(
-                      (med) => Chip(
-                        label: Text(med),
-                        deleteIcon: Icon(Icons.close),
-                        onDeleted: () => toggleMedication(med),
-                      ),
-                    )
-                    .toList(),
-              ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
+
+Center(
+  child: Container(
+    height: 150,
+    //  padding: const EdgeInsets.all(8),
+    alignment: Alignment.center,
+    decoration: BoxDecoration(
+      color: Colors.grey[200], // Light gray background
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: _selectedItems.isEmpty
+        ? const Text('Nothing selected')
+        : SingleChildScrollView(
+            child: Wrap(
+              spacing: 18, // Horizontal spacing between chips
+              runSpacing: 8, // Vertical spacing between chips
+              children: _selectedItems
+                  .map(
+                    (item) => Chip(
+  label: Text(item,  style: TextStyle(
+                color: const Color(0xFF0b5369),
+              ),),
+  deleteIcon: const Icon(Icons.close),
+  onDeleted: () {
+    setState(() {
+      _selectedItems.remove(item);
+    });
+  },
+  backgroundColor: Colors.grey[100], // Background color of the chip
+  shape: RoundedRectangleBorder(
+    side: BorderSide(
+      color: const Color(0xFF0b5369), // Border color
+      width: 1.5,        // Border width
+    ),
+    borderRadius: BorderRadius.circular(30), // Rounded corners
+  ),
+),
+
+                  )
+                  .toList(),
+            ),
+          ),
+  ),
+),
+
+            const SizedBox(height: 24),
             Expanded(
               child: ListView(
-                children: [
-                  ExpansionTile(
-                    title: Text("Bioidentical/compounded HRT"),
-                    children: medications
-                        .map(
-                          (med) => ListTile(
-                            title: Text(med),
-                            onTap: () => toggleMedication(med),
+                children: _expandedSections.keys.map((section) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+  color: const Color(0xFFF8E7F0), // Light pink background color
+                     child: ListTile(
+                        title: Text(
+                          section,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: const Color(0xFF0b5369),
+                            backgroundColor: Color(0xFFF8E7F0),
                           ),
-                        )
-                        .toList(),
+                        ),
+                        trailing: Icon(
+                          _expandedSections[section]!
+                              ? Icons.expand_less
+                              : Icons.expand_more,
+                        ),
+                        onTap: () {
+                          setState(() {
+                            _expandedSections[section] =
+                                !_expandedSections[section]!;
+                          });
+                        },
+                      ),
                   ),
-                  ExpansionTile(
-                    title: Text("Combination patches"),
-                    children: [Text("Example Item")],
-                  ),
-                  ExpansionTile(
-                    title: Text("Combination tablets"),
-                    children: [Text("Example Item")],
-                  ),
-                  ExpansionTile(
-                    title: Text("Estrogen gel"),
-                    children: [Text("Example Item")],
-                  ),
-                  ExpansionTile(
-                    title: Text("Estrogen patches"),
-                    children: [Text("Example Item")],
-                  ),
-                ],
+                  const SizedBox(height: 10),
+                      if (_expandedSections[section]!)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Wrap(
+                            spacing: 12,
+                            runSpacing: 12,
+                            children: _sectionContent[section]!
+                                .map(
+                                  (item) => GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        if (_selectedItems.contains(item)) {
+                                          _selectedItems.remove(item);
+                                        } else {
+                                          _selectedItems.add(item);
+                                        }
+                                      });
+                                    },
+                                    child: Container(
+                                      width: 160,
+                                      // (MediaQuery.of(context).size.width /
+                                      //         2) -
+                                      //     32,
+                                      padding: const EdgeInsets.all(8),
+                                      height: 80,
+                                      decoration: BoxDecoration(
+                                        color: _selectedItems.contains(item)
+                                            ? Color(0xFF3739C0)
+                                            : Color(0xFFDCDCF6),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ), 
+                                      child: Text(
+                                          item,
+                                        style: TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.bold,
+  color: _selectedItems.contains(item)
+      ? Colors.white // If the item is selected, set the color to white
+      : const Color(0xFF0b5369), // If not selected, set the color to #0b5369
+),
+
+                                        ),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                    ],
+                  );
+                }).toList(),
               ),
             ),
           ],
