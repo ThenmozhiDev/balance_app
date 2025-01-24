@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'LoginScreen.Dart';
 import 'package:balance_app/hrt_steps/QuestionnaireScreen.dart';
 import 'package:balance_app/hrt_steps/PeriodScreen.dart';
+import 'PostCreateForm.Dart';
+import 'ExperimentsPopup.Dart';
 
 
 class OnboardingPage extends StatelessWidget {
@@ -180,6 +182,48 @@ Stack(
                       ),
                       child: const Text(
                         'Go to balance',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                      const SizedBox(height: 24),
+                     ElevatedButton(
+                      onPressed: () {
+                          Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => PostCreateForm()),
+                    );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4C48B7), // Purple color
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 120, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: const Text(
+                        'Create Post',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                     ElevatedButton(
+                      onPressed: () {
+                          Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ExperimentsPopup()),
+                    );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4C48B7), // Purple color
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 120, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: const Text(
+                        'Open Experiments',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
