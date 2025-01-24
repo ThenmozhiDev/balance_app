@@ -81,7 +81,7 @@ class _EmailNotReceivedPageState extends State<EmailNotReceivedPage> {
               ),
               const SizedBox(height: 16),
               const Text(
-                'Please double-check for any typos. If there is a typo, you can re-enter it.',
+                'Please double check for any typos. If there is a typo, you can re-enter it.',
                 style: TextStyle(
                   fontSize: 16,
                   height: 1.5,
@@ -111,56 +111,23 @@ class _EmailNotReceivedPageState extends State<EmailNotReceivedPage> {
               ),
               const SizedBox(height: 16),
               const Text(
-                'Check your spam; you may need to wait a couple of minutes for the email to appear.',
+                'Check your spam, you may need to wait a couple of minutes for the email to appear.',
                 style: TextStyle(
                   fontSize: 16,
                   height: 1.5,
                 ),
               ),
               const SizedBox(height: 8),
-               Center(
-              child:GestureDetector(
+              GestureDetector(
                 onTap: _resendEmail,
-                child: const Text(
+                child: Text(
                   "Attempt to re-send the email",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.blue,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
-                  ),
+                  style: TextStyle(fontSize: 16, color: Colors.blue),
                 ),
               ),
-          ),
-              
-              const SizedBox(height: 16),
-              const Text(
-                'If you still haven’t received an email from us, you can contact us at the address below:',
-                style: TextStyle(
-                  fontSize: 16,
-                  height: 1.5,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    // Handle contact action (email link)
-                  },
-                  child: const Text(
-                    'info@balance-app.com',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 40),
-              Center(
-                child:    // Stack to overlay content on top of the image
+              const SizedBox(height: 16), // Ensure space before the image
+
+              // Stack to overlay content on top of the image
               Stack(
                 alignment: Alignment.center,
                 children: [
@@ -172,22 +139,17 @@ class _EmailNotReceivedPageState extends State<EmailNotReceivedPage> {
                   // Positioned message on top of the image
                   if (_showResentMessage)
                     Positioned(
-                      bottom: 200, // Adjust position from the bottom of the image
+                      bottom: 20, // Adjust position from the bottom of the image
                       child: Container(
-  padding: const EdgeInsets.all(12.0),
-  decoration: BoxDecoration(
-    color: Color(0xFF0DF4EB),
-    borderRadius: BorderRadius.circular(30.0), // Adjust the radius as needed
-  ),
-  child: Text(
-    "Code re-sent via email",
-    style: TextStyle(fontSize: 16, color: Colors.black),
-  ),
-)
-
+                        padding: const EdgeInsets.all(12.0),
+                        color: Colors.green[100],
+                        child: Text(
+                          "Code re-sent via email",
+                          style: TextStyle(fontSize: 16, color: Colors.green[800]),
+                        ),
+                      ),
                     ),
                 ],
-              ),
               ),
             ],
           ),

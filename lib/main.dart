@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'balance/BalanceAppScreen.dart'; // Ensure BalanceAppScreen.dart is correctly implemented
-import 'balance/HelpButtonDemo.dart'; // Corrected import
+// import 'hrt_steps/PeriodScreen.Dart'; // Ensure BalanceAppScreen.dart is correctly implemented
+import 'balance/BalanceAppScreen.dart';
+import 'balance/HelpButtonDemo.dart'; // Corrected import BalanceAppScreen
 
-// import 'balance/CreateAccountPage.dart';
+import 'balance/AccountExistsPage.Dart';
 
 void main() {
   runApp(MyApp());
@@ -32,14 +33,7 @@ class _AppWithStickyButtonState extends State<AppWithStickyButton> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    // Example(),
-    // StickyButton(),
-    // SignUpScreen(),
-    // BalanceTabScreen(),
     BalanceAppScreen(), // Main page content
-    // BalanceTabScreen(),
-    // TabScreen(),
-    // CreateAccountPage(),
     Center(child: Text('Search Page')),
     Center(child: Text('Profile Page')),
   ];

@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 import 'WoopsPage.Dart';
 
-class VerifyEmailPage extends StatefulWidget {
+class ResendEmailPage extends StatefulWidget {
   @override
-  _VerifyEmailPageState createState() => _VerifyEmailPageState();
+  _ResendEmailPageState createState() => _ResendEmailPageState();
 }
 
-class _VerifyEmailPageState extends State<VerifyEmailPage> {
-  final TextEditingController _codeController = TextEditingController();
-  final _formKey = GlobalKey<FormState>(); // Added form key
+class _ResendEmailPageState extends State<ResendEmailPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
-  // Validate the code to be a 6-digit number
-  String? _validateCode(String? value) {
+  // Validate the email address
+  String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Code is required';
+      return 'Email is required';
     }
-    if (!RegExp(r'^\d{6}$').hasMatch(value)) {
-      return 'Please enter a valid 6-digit code';
+    // Basic email regex pattern
+    if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(value)) {
+      return 'Please enter a valid email address';
     }
     return null;
   }
 
   void _verifyEmail() {
-    final code = _codeController.text;
+    final email = _emailController.text;
     // Add email verification logic here
-    print('Verifying code: $code');
+    print('Verifying email: $email');
   }
 
   @override
@@ -46,7 +47,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          key: _formKey, // Use form key
+          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -55,27 +56,19 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Verify your email\naddress',
-                      style: TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Color(0xFF0b5369),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      'Please provide the 6-digit code you\nreceived by email',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
-                        height: 1.5,
-                        color: Color(0xFF0b5369),
-                      ),
-                    ),
+                   const Text(
+  "Let's Keep your account\n safe",
+  style: TextStyle(
+    fontSize: 30,
+    fontWeight: FontWeight.bold,
+    color: Color(0xFF0b5369),
+  ),
+),
+
+                 
                     const SizedBox(height: 20),
                     const Text(
-                      'Code',
+                      'Your email',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -84,32 +77,29 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
-                      controller: _codeController,
+                      controller: _emailController,
                       decoration: const InputDecoration(
-                        hintText: 'Enter code here',
+                        hintText: 'Enter email address',
                         border: OutlineInputBorder(),
                       ),
-                      keyboardType: TextInputType.number,
-                      validator: _validateCode, // Add validation here
+                      keyboardType: TextInputType.emailAddress,
+                      validator: _validateEmail, // Email validation logic
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        // Check if the form is valid
-                      if (_formKey.currentState?.validate() ?? false) {
-  // The form is valid, so proceed with verification
-  _verifyEmail();
+                        if (_formKey.currentState?.validate() ?? false) {
+                          // The form is valid, so proceed with verification
+                          _verifyEmail();
 
-  // Navigate to the WoopsPage
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => WoopsPage(),
-    ),
-  );
-}
-
-                        
+                          // Navigate to the WoopsPage
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => WoopsPage(),
+                            ),
+                          );
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF353fbb),

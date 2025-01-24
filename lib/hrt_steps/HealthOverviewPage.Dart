@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'BalanceTabScreen.dart';
 import 'ResendEmailPage.dart';
 
-class EmailNotReceivedPage extends StatefulWidget {
+class HealthOverviewPage extends StatefulWidget {
   @override
-  _EmailNotReceivedPageState createState() => _EmailNotReceivedPageState();
+  _HealthOverviewPageState createState() => _HealthOverviewPageState();
 }
 
-class _EmailNotReceivedPageState extends State<EmailNotReceivedPage> {
+class _HealthOverviewPageState extends State<HealthOverviewPage> {
   bool _showResentMessage = false;
 
   void _resendEmail() {

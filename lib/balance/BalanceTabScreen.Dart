@@ -51,7 +51,7 @@ Widget build(BuildContext context) {
         ),
         backgroundColor: const Color(0xFF0b5369),
         centerTitle: true,
-        toolbarHeight: 100.0,
+        toolbarHeight: 70.0,
       ),
       body: SingleChildScrollView(
         child: Column(
