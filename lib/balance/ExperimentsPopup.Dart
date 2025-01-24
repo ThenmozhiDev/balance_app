@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'PostCreateForm.Dart';
+import 'OnboardingPage.Dart';
 
 class ExperimentsPopup extends StatelessWidget {
   @override
@@ -87,7 +88,7 @@ class ExperimentsPopup extends StatelessWidget {
               onPressed: () {
                  Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => PostCreateForm()),
+              MaterialPageRoute(builder: (context) => OnboardingPage()),
             );
               },
               style: ElevatedButton.styleFrom(
