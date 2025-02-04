@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'BalanceAppScreen.Dart';
 import 'OnboardingPage.Dart';
-import 'ReviewTreatment.Dart';
 
 class FeedBackPage extends StatefulWidget {
   @override
@@ -40,7 +38,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BalanceAppScreen()),
+              MaterialPageRoute(builder: (context) => OnboardingPage()),
             );
           },
         ),
@@ -110,14 +108,14 @@ class _FeedBackPageState extends State<FeedBackPage> {
                 color: Color(0xFF0b5369),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 40),
             ElevatedButton(
               onPressed: _isButtonEnabled
                   ? () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ReviewTreatment()),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => ReviewTreatment()),
+                      // );
                     }
                   : null, // Disable the button when no text is entered
               style: ElevatedButton.styleFrom(
