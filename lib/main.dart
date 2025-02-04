@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-// import 'hrt_steps/PeriodScreen.Dart'; // Ensure BalanceAppScreen.dart is correctly implemented
+// import 'hrt_steps/BalancePlusPage.Dart'; // Ensure BalanceAppScreen.dart is correctly implemented
 import 'balance/BalanceAppScreen.dart';
 import 'balance/HelpButtonDemo.dart'; // Corrected import BalanceAppScreen
 
@@ -34,6 +33,7 @@ class _AppWithStickyButtonState extends State<AppWithStickyButton> {
 
   final List<Widget> _pages = [
     BalanceAppScreen(), // Main page content
+    // BalancePlusPage(),
     Center(child: Text('Search Page')),
     Center(child: Text('Profile Page')),
   ];
