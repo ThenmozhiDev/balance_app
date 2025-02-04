@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 // import 'hrt_steps/BalancePlusPage.Dart'; // Ensure BalanceAppScreen.dart is correctly implemented
-import 'balance/BalanceAppScreen.dart';
-import 'balance/HelpButtonDemo.dart'; // Corrected import BalanceAppScreen
+import 'pages/screens/BalanceAppScreen.dart';
+import 'package:balance_app/widgets/HelpButtonDemo.Dart'; // Corrected import BalanceAppScreen
 
-import 'balance/AccountExistsPage.Dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,25 +18,27 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AppWithStickyButton(),
+      home: const AppWithStickyButton(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class AppWithStickyButton extends StatefulWidget {
+  const AppWithStickyButton({super.key});
+
   @override
   _AppWithStickyButtonState createState() => _AppWithStickyButtonState();
 }
 
 class _AppWithStickyButtonState extends State<AppWithStickyButton> {
-  int _currentIndex = 0;
+  final int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    BalanceAppScreen(), // Main page content
+    const BalanceAppScreen(), // Main page content
     // BalancePlusPage(),
-    Center(child: Text('Search Page')),
-    Center(child: Text('Profile Page')),
+    const Center(child: Text('Search Page')),
+    const Center(child: Text('Profile Page')),
   ];
 
   bool isExpanded = false;
