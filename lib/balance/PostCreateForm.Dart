@@ -5,6 +5,7 @@ import 'ResetPasswordPage.Dart';
 import 'AddTags.Dart';
 import 'ExperimentsPopup.Dart';
 import 'FeedBackPage.Dart';
+import 'OnboardingPage.Dart';
 
 class PostCreateForm extends StatefulWidget {
   @override
@@ -26,7 +27,7 @@ class _PostCreateFormState extends State<PostCreateForm> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BalanceAppScreen()),
+              MaterialPageRoute(builder: (context) => OnboardingPage()),
             );
           },
         ),
@@ -204,7 +205,7 @@ class _PostCreateFormState extends State<PostCreateForm> {
                 ),
               ],
             ),
-            // Show "Hello World" if dropdown is open
+           
             if (_isDropdownOpen)
              Padding(
     padding: const EdgeInsets.only(top: 8.0),
@@ -262,12 +263,7 @@ class _PostCreateFormState extends State<PostCreateForm> {
   ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FeedBackPage()),
-                );
-              },
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color(0xFF4C48B7),
                 minimumSize: Size(double.infinity, 50),
@@ -283,31 +279,3 @@ class _PostCreateFormState extends State<PostCreateForm> {
     );
   }
 }
-
-   //       if (_isDropdownOpen)
-          //     Text(
-          //       'Lifestyle changes\n',
-          //      ' Have you made any or attempted to make any lifestyle changes? Explain your experience.',
-          //       style: TextStyle(
-          //         fontSize: 18,
-          //         color: Color(0xFF0b5369),
-          //       ),
-          //     ),
-          //       if (_isDropdownOpen)
-          //     Text(
-          //       ' Work life\n',
-          //      'Describe your experiences in the workplace during your perimenopause/menopause journey.',
-          //       style: TextStyle(
-          //         fontSize: 18,
-          //         color: Color(0xFF0b5369),
-          //       ),
-          //     ),
-          //       if (_isDropdownOpen)
-          //     Text(
-          //  ' Words of wisdom\n',
-          //      'Share any advice, or learnings from your experience with the community',
-          //       style: TextStyle(
-          //         fontSize: 18,
-          //         color: Color(0xFF0b5369),
-          //       ),
-          //     )

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'BalanceAppScreen.Dart';
-import 'OnboardingPage.Dart';
+import 'package:balance_app/balance/OnboardingPage.Dart';
 import 'ExperienceTreatment.Dart';
 
 class RateTreatment extends StatefulWidget {
@@ -26,7 +25,7 @@ class _RateTreatmentState extends State<RateTreatment> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BalanceAppScreen()),
+              MaterialPageRoute(builder: (context) => ExperienceTreatment()),
             );
           },
         ),
@@ -61,7 +60,7 @@ class _RateTreatmentState extends State<RateTreatment> {
                   ? () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ExperienceTreatment()),
+                        MaterialPageRoute(builder: (context) => OnboardingPage()),
                       );
                     }
                   : null, // Disable button if rating is less than 3 stars
