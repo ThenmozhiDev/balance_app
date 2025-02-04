@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'BalanceAppScreen.Dart';
-import 'OnboardingPage.Dart';
 import 'RateTreatment.Dart';
+import 'SideEffectTreatment.Dart';
 
 class ExperienceTreatment extends StatefulWidget {
   @override
@@ -40,7 +39,7 @@ class _ExperienceTreatmentState extends State<ExperienceTreatment> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BalanceAppScreen()),
+              MaterialPageRoute(builder: (context) => SideEffectTreatment()),
             );
           },
         ),

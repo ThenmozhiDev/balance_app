@@ -4,6 +4,8 @@ import 'package:balance_app/hrt_steps/QuestionnaireScreen.dart';
 import 'package:balance_app/hrt_steps/PeriodScreen.dart';
 import 'PostCreateForm.Dart';
 import 'ExperimentsPopup.Dart';
+import 'FeedBackPage.Dart';
+import 'package:balance_app/reviews/ReviewTreatment.Dart';
 
 
 class OnboardingPage extends StatelessWidget {
@@ -224,6 +226,48 @@ Stack(
                       ),
                       child: const Text(
                         'Open Experiments',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                     const SizedBox(height: 24),
+                     ElevatedButton(
+                      onPressed: () {
+                          Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FeedBackPage()),
+                    );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4C48B7), // Purple color
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 120, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: const Text(
+                        'Create Feedback',
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                      ),
+                    ),
+                     const SizedBox(height: 24),
+                     ElevatedButton(
+                      onPressed: () {
+                          Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ReviewTreatment()),
+                    );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4C48B7), // Purple color
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 120, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      child: const Text(
+                        'Review Treatment',
                         style: TextStyle(fontSize: 18, color: Colors.white),
                       ),
                     ),
