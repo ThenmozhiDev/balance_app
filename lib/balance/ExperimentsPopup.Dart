@@ -64,26 +64,6 @@ class ExperimentsPopup extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    // Center(
-                      // child: TextButton(
-                      //   onPressed: () {
-                      //       Navigator.push(context, MaterialPageRoute(builder: (context) => PostCreateForm()));
-                      //   },
-                      //   style: TextButton.styleFrom(
-                      //     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                      //     backgroundColor: const Color(0xFF0b5369),
-                      //     shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(8.0),
-                      //     ),
-                      //   ),
-                      //   child: const Text(
-                      //     "Okay, got it",
-                      //     style: TextStyle(
-                      //       fontSize: 16,
-                      //       color: Colors.white,
-                      //     ),
-                      //   ),
-                      // ),
                        ElevatedButton(
               onPressed: () {
                  Navigator.push(

@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'BalanceAppScreen.Dart';
-import 'OnboardingPage.Dart';
-import 'CurrentTreatment.Dart';
+import 'ExperienceTreatment.Dart';
+import 'SummariseTreatment.Dart';
 
-class ReviewTreatment extends StatefulWidget {
+class SideEffectTreatment extends StatefulWidget {
   @override
-  _ReviewTreatmentState createState() => _ReviewTreatmentState();
+  _SideEffectTreatmentState createState() => _SideEffectTreatmentState();
 }
 
-class _ReviewTreatmentState extends State<ReviewTreatment> {
+class _SideEffectTreatmentState extends State<SideEffectTreatment> {
   String? _selectedOption; // Variable to track the selected option
 
   void _onOptionSelected(String value) {
@@ -26,7 +25,7 @@ class _ReviewTreatmentState extends State<ReviewTreatment> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BalanceAppScreen()),
+              MaterialPageRoute(builder: (context) => SummariseTreatment()),
             );
           },
         ),
@@ -46,7 +45,7 @@ class _ReviewTreatmentState extends State<ReviewTreatment> {
           children: [
             SizedBox(height: 15),
             Text(
-              'What type of treatment do you want to review?',
+              'Have you experienced any side effects?',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -62,10 +61,10 @@ class _ReviewTreatmentState extends State<ReviewTreatment> {
               ),
               child: RadioListTile<String>(
                 title: Text(
-                  'HRT',
+                  'Yes',
                   style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
                 ),
-                value: 'HRT',
+                value: 'yes',
                 groupValue: _selectedOption,
                 onChanged: (value) {
                   _onOptionSelected(value!);
@@ -81,23 +80,23 @@ class _ReviewTreatmentState extends State<ReviewTreatment> {
               ),
               child: RadioListTile<String>(
                 title: Text(
-                  'Alternatives to HRT',
+                  'No',
                   style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
                 ),
-                value: 'alternatives to hrt',
+                value: 'no',
                 groupValue: _selectedOption,
                 onChanged: (value) {
                   _onOptionSelected(value!);
                 },
               ),
             ),
-            SizedBox(height: 300),
+            SizedBox(height: 200),
             ElevatedButton(
               onPressed: _selectedOption != null
                   ? () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => CurrentTreatment()),
+                        MaterialPageRoute(builder: (context) => ExperienceTreatment()),
                       );
                     }
                   : null, // Disable button if no option is selected

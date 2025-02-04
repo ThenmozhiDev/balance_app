@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'BalanceAppScreen.Dart';
-import 'OnboardingPage.Dart';
-import 'SideEffectTreatment.Dart';
+import 'TreatmentReview.Dart';
+import 'ReviewTreatment.Dart';
 
-class SummariseTreatment extends StatefulWidget {
+class CurrentTreatment extends StatefulWidget {
   @override
-  _SummariseTreatmentState createState() => _SummariseTreatmentState();
+  _CurrentTreatmentState createState() => _CurrentTreatmentState();
 }
 
-class _SummariseTreatmentState extends State<SummariseTreatment> {
+class _CurrentTreatmentState extends State<CurrentTreatment> {
   String? _selectedOption; // Variable to track the selected option
 
   void _onOptionSelected(String value) {
@@ -26,7 +25,7 @@ class _SummariseTreatmentState extends State<SummariseTreatment> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BalanceAppScreen()),
+              MaterialPageRoute(builder: (context) => ReviewTreatment()),
             );
           },
         ),
@@ -46,7 +45,7 @@ class _SummariseTreatmentState extends State<SummariseTreatment> {
           children: [
             SizedBox(height: 15),
             Text(
-              'Summarise your experience with this treatment.',
+              'How long hav you been taking your current treatment?',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -62,10 +61,10 @@ class _SummariseTreatmentState extends State<SummariseTreatment> {
               ),
               child: RadioListTile<String>(
                 title: Text(
-                  'No improvement',
+                  'Less than 3 months',
                   style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
                 ),
-                value: 'No improvement',
+                value: 'less than 3 months',
                 groupValue: _selectedOption,
                 onChanged: (value) {
                   _onOptionSelected(value!);
@@ -81,10 +80,10 @@ class _SummariseTreatmentState extends State<SummariseTreatment> {
               ),
               child: RadioListTile<String>(
                 title: Text(
-                  'Slight improvement',
+                  '3-12 months',
                   style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
                 ),
-                value: 'Slight improvement',
+                value: '3-12 months',
                 groupValue: _selectedOption,
                 onChanged: (value) {
                   _onOptionSelected(value!);
@@ -99,24 +98,59 @@ class _SummariseTreatmentState extends State<SummariseTreatment> {
               ),
               child: RadioListTile<String>(
                 title: Text(
-                  'Significant improvement',
+                  '1-2 years',
                   style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
                 ),
-                value: 'Significant improvement',
+                value: '1-2 years',
                 groupValue: _selectedOption,
                 onChanged: (value) {
                   _onOptionSelected(value!);
                 },
               ),
             ),
-        
-            SizedBox(height: 200),
+              SizedBox(height: 10),
+             Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFE6E6FF), // Green background color
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: RadioListTile<String>(
+                title: Text(
+                  '2-5 years',
+                  style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
+                ),
+                value: '2-5 years',
+                groupValue: _selectedOption,
+                onChanged: (value) {
+                  _onOptionSelected(value!);
+                },
+              ),
+            ),
+              SizedBox(height: 10),
+             Container(
+              decoration: BoxDecoration(
+                color: Color(0xFFE6E6FF), // Green background color
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: RadioListTile<String>(
+                title: Text(
+                  'Over 5 years',
+                  style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
+                ),
+                value: 'Over 5 years',
+                groupValue: _selectedOption,
+                onChanged: (value) {
+                  _onOptionSelected(value!);
+                },
+              ),
+            ),
+            SizedBox(height: 150),
             ElevatedButton(
               onPressed: _selectedOption != null
                   ? () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SideEffectTreatment()),
+                        MaterialPageRoute(builder: (context) => TreatmentReview()),
                       );
                     }
                   : null, // Disable button if no option is selected

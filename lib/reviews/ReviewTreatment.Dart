@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'BalanceAppScreen.Dart';
-import 'OnboardingPage.Dart';
-import 'ExperienceTreatment.Dart';
+import 'package:balance_app/balance/OnboardingPage.Dart';
+import 'CurrentTreatment.Dart';
 
-class SideEffectTreatment extends StatefulWidget {
+class ReviewTreatment extends StatefulWidget {
   @override
-  _SideEffectTreatmentState createState() => _SideEffectTreatmentState();
+  _ReviewTreatmentState createState() => _ReviewTreatmentState();
 }
 
-class _SideEffectTreatmentState extends State<SideEffectTreatment> {
+class _ReviewTreatmentState extends State<ReviewTreatment> {
   String? _selectedOption; // Variable to track the selected option
 
   void _onOptionSelected(String value) {
@@ -26,7 +25,7 @@ class _SideEffectTreatmentState extends State<SideEffectTreatment> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => BalanceAppScreen()),
+              MaterialPageRoute(builder: (context) => OnboardingPage()),
             );
           },
         ),
@@ -46,7 +45,7 @@ class _SideEffectTreatmentState extends State<SideEffectTreatment> {
           children: [
             SizedBox(height: 15),
             Text(
-              'Have you experienced any side effects?',
+              'What type of treatment do you want to review?',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -62,10 +61,10 @@ class _SideEffectTreatmentState extends State<SideEffectTreatment> {
               ),
               child: RadioListTile<String>(
                 title: Text(
-                  'Yes',
+                  'HRT',
                   style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
                 ),
-                value: 'yes',
+                value: 'HRT',
                 groupValue: _selectedOption,
                 onChanged: (value) {
                   _onOptionSelected(value!);
@@ -81,23 +80,23 @@ class _SideEffectTreatmentState extends State<SideEffectTreatment> {
               ),
               child: RadioListTile<String>(
                 title: Text(
-                  'No',
+                  'Alternatives to HRT',
                   style: TextStyle(fontSize: 18, color: Color(0xFF0b5369),),
                 ),
-                value: 'no',
+                value: 'alternatives to hrt',
                 groupValue: _selectedOption,
                 onChanged: (value) {
                   _onOptionSelected(value!);
                 },
               ),
             ),
-            SizedBox(height: 200),
+            SizedBox(height: 300),
             ElevatedButton(
               onPressed: _selectedOption != null
                   ? () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ExperienceTreatment()),
+                        MaterialPageRoute(builder: (context) => CurrentTreatment()),
                       );
                     }
                   : null, // Disable button if no option is selected
