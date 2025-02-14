@@ -58,20 +58,31 @@ class _FeedBackPageState extends State<FeedBackPage> {
             Text(
               'Tell us what you think about the app',
               style: TextStyle(
-                fontSize: 24,
+                 fontFamily: 'LibreBaskerville', 
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Color(0xFF0b5369),
               ),
             ),
             SizedBox(height: 20),
-            TextField(
-              controller: _feedbackController,
-              decoration: InputDecoration(
-                hintText: "e.g. We'd love to know what you think of balance",
-                border: OutlineInputBorder(),
-              ),
-              maxLines: 5,
-            ),
+          TextField(
+  controller: _feedbackController,
+  decoration: InputDecoration(
+    hintText: "e.g. We'd love to know what you think of balance",
+    hintStyle: TextStyle(color: Colors.grey.shade400),
+    border: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey.shade300), // Light gray border
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey.shade300), // Light gray when not focused
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey.shade300), // Slightly darker gray when focused
+    ),
+  ),
+  maxLines: 5,
+),
+
             SizedBox(height: 20),
             Text(
               'If you are reporting an issue, please provide the details below to help us solve the issue as quickly as possible.',
